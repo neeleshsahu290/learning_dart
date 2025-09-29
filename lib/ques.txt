@@ -1,0 +1,180 @@
+. Arrays & Strings
+
+Easy:
+	1.	Reverse words in a string.
+	2.	Check if a string is a palindrome.
+	3.	Move all zeros to the end of the array.
+	4.	Find duplicates in an array.
+	5.	Find the first non-repeating character in a string.
+	6.	Count frequency of elements in an array.
+	7.	Check if two strings are anagrams.
+	8.	Merge two sorted arrays.
+	9.	Find all pairs with a given sum.
+	10.	Rotate an array by k positions.
+
+Medium:
+11. Maximum product subarray.
+12. Longest substring without repeating characters.
+13. String compression.
+14. Intersection of two arrays.
+15. Maximum subarray sum (Kadane’s algorithm).
+
+Tough:
+16. Longest palindromic substring.
+17. Minimum window substring.
+18. Word break problem.
+19. Longest substring with at most K distinct characters.
+20. Sliding window maximum.
+
+⸻
+
+2. Linked Lists
+
+Easy:
+21. Reverse a linked list.
+22. Find the middle of a linked list.
+23. Remove N-th node from the end.
+24. Merge two sorted linked lists.
+
+Medium:
+25. Detect a cycle in a linked list.
+26. Check if a linked list is a palindrome.
+27. Add two numbers represented by linked lists.
+
+Tough:
+28. Flatten a multilevel linked list.
+29. Copy a linked list with random pointers.
+30. Intersection point of two linked lists.
+
+⸻
+
+3. Trees & Graphs
+
+Easy:
+31. Inorder, Preorder, Postorder traversal.
+32. Level order traversal.
+33. Maximum depth of a binary tree.
+34. Check if a binary tree is balanced.
+35. BFS and DFS in graphs.
+
+Medium:
+36. Lowest common ancestor in a BST.
+37. Convert sorted array to BST.
+38. Number of islands problem.
+39. Diameter of a binary tree.
+40. Detect cycle in a graph.
+
+Tough:
+41. Serialize and deserialize a tree.
+42. Clone a graph.
+43. Topological sort.
+44. Minimum spanning tree (Kruskal/Prim).
+45. Shortest path (Dijkstra/Bellman-Ford).
+
+⸻
+
+4. Dynamic Programming (DP)
+
+Easy:
+46. Fibonacci numbers.
+47. Climbing stairs problem.
+48. Unique paths in a grid.
+49. Minimum cost path.
+50. Subset sum problem.
+
+Medium:
+51. Longest common subsequence.
+52. Longest increasing subsequence.
+53. Maximum sum increasing subsequence.
+54. Coin change problem.
+55. Palindromic substring count.
+
+Tough:
+56. Edit distance problem.
+57. Partition equal subset sum.
+58. Decode ways (number of ways to decode digits to letters).
+59. Maximum product cutting problem.
+60. Minimum number of jumps to reach end.
+
+⸻
+
+5. Stack & Queue
+
+Easy:
+61. Implement a stack using array/linked list.
+62. Implement a queue using array/linked list.
+63. Valid parentheses check.
+
+Medium:
+64. Min stack (stack that returns minimum in O(1)).
+65. Next greater element.
+66. Implement circular queue.
+67. Evaluate reverse polish notation.
+
+Tough:
+68. Largest rectangle in histogram.
+69. Sliding window maximum.
+70. Implement LRU cache.
+
+⸻
+
+6. Hashing
+
+Easy:
+71. Two sum problem.
+72. Count subarrays with equal number of 0s and 1s.
+73. Find duplicates in array using hashing.
+
+Medium:
+74. Longest consecutive sequence.
+75. Group anagrams.
+76. Top K frequent elements.
+77. Intersection of two arrays II.
+78. Check if array is a subset of another array.
+
+Tough:
+79. Happy number problem.
+80. Subarray sum equals k.
+81. Longest substring with at most K distinct characters.
+
+⸻
+
+7. Sorting & Searching
+
+Easy:
+82. Binary search in sorted array.
+83. Merge sort and quick sort.
+84. Find peak element in array.
+85. Count occurrences of element in sorted array.
+
+Medium:
+86. Search in rotated sorted array.
+87. Kth largest/smallest element.
+88. Dutch national flag problem.
+89. Median of two sorted arrays.
+
+Tough:
+90. Allocate minimum pages (book allocation problem).
+91. Inversion count in array.
+
+⸻
+
+8. Math & Bit Manipulation
+
+Easy:
+92. Reverse integer.
+93. Check if a number is power of two.
+94. Count set bits in an integer.
+95. Find missing number in array 1..N.
+
+Medium:
+96. Single number (all elements appear twice except one).
+97. Add two numbers without using + or -.
+98. Multiply two numbers without using *.
+
+Tough:
+99. Detect if a number is a palindrome.
+100. XOR of all numbers from 1 to N.
+101. Divide two integers without using / operator.
+
+provide a direct download pdf file of all the above questions with include dart ans
