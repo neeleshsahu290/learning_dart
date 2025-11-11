@@ -35,24 +35,11 @@ countOccurance(List<int> ls) {
 removeVowels(String str) {
   List<String> vowels = ["a", "e", "i", "o", "u"];
 
-  List sentence = str.split("").map(
-    (e) {
-      if (!vowels.contains(e))
-        return e;
-      else
-        "";
-    },
-  ).toList();
+  var sentence = str
+      .split("")
+      .where((element) => !vowels.contains(element))
+      .toList()
+      .join("");
 
-  var ls = [];
-
-  for (var i in sentence) {
-    if (i != null) {
-      ls.add(i);
-    }
-  }
-
-  var sent = ls.join("");
-
-  print(sent);
+  print(sentence);
 }
