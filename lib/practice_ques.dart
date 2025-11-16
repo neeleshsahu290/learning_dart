@@ -1,3 +1,10 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
+
+import 'package:learning_dart/sove.dart';
+import 'package:collection/collection.dart';
+
 void main() {
   var ls = moveZerosEnd([0, 1, 6, 0, 4, 6]);
   print(ls);
@@ -272,7 +279,7 @@ rotatetheArray(List<int> ls, int posRot) {
 countVowelsAndConsent(String str) {
   int vowels = 0;
 
-  List lsVOw = ['a', 'e', 'i', '0', 'u'];
+  List lsVOw = ['a', 'e', 'i', 'o', 'u'];
   for (String ch in str.split('')) {
     if (lsVOw.contains(ch.toLowerCase())) vowels++;
   }
@@ -296,8 +303,8 @@ replaceMultipleSpaceWithSngle(String str) {
       sp = 0;
       a.add(ch);
     }
-    return a.join('');
   }
+  return a.join('');
 }
 
 // 	7.	Check if a string is a palindrome (ignore spaces/punctuation).
@@ -351,12 +358,49 @@ String? findMostFreqChar(String str) {
 // 	11.	Count occurrences of each word in a sentence.
 // 	12.	Truncate a string and add “…” if it exceeds a certain length.
 String translucateString(String str, int len) {
- return str.length < len ? str : "${str.substring(0, len)}...";
+  return str.length < len ? str : "${str.substring(0, len)}...";
 }
+
 // 	13.	Find all substrings of a given string.
+List<String> getSubStrings(String str) {
+  List<String> sub = [];
+  for (int i = 0; i < str.length; i++) {
+    for (int j = i + 1; j < str.length - 1; j++) {
+      sub.add(str.substring(i, j));
+    }
+  }
+  return sub;
+}
+
 // 	14.	Remove specific characters from a string.
+String removeChar(String str, String ch) {
+  return str.replaceAll(ch, '');
+}
+
 // 	15.	Swap case of each character (upper ↔ lower).
+String swapCase(String str) {
+  return str
+      .split("")
+      .map(
+        (ch) => ch.toUpperCase() == ch ? ch.toLowerCase() : ch.toUpperCase(),
+      )
+      .join('');
+}
+
 // 	16.	Count digits, letters, and special symbols in a string.
+count(String str) {
+  int letter = 0;
+  int digit = 0;
+  int spChar = 0;
+  for (String ch in str.split('')) {
+    if (RegExp(r'[a-zA-Z]').hasMatch(ch))
+      letter++;
+    else if (RegExp(r'\d').hasMatch(ch))
+      digit++;
+    else
+      spChar++;
+  }
+}
 // 	17.	Check if two strings are rotations of each other.
 // 	18.	Remove HTML tags from a string.
 // 	19.	Extract all URLs from a text.
@@ -366,20 +410,92 @@ String translucateString(String str, int len) {
 
 // 📋 2. Lists & Collections
 // 	21.	Remove duplicates from a list.
+removeDuplicates(List ls) {
+  return ls.toSet();
+}
+
 // 	22.	Find the second largest element in a list.
+secondLargest(List<int> ls) {
+  ls.sort();
+  if (ls.length > 1) {
+    return ls[1];
+  }
+  return null;
+}
+
 // 	23.	Merge two sorted lists.
 // 	24.	Rotate a list left/right by n positions.
 // 	25.	Move all zeros to the end of a list.
 // 	26.	Reverse a list in place.
 // 	27.	Flatten a nested list.
+List<dynamic> flattern(List ls) {
+  List x = [];
+  for (var i in ls) {
+    if (i is List) {
+      x.addAll(flattern(i));
+    } else {
+      x.add(i);
+    }
+  }
+  return x;
+}
+
 // 	28.	Count frequency of elements in a list.
 // 	29.	Get common elements between two lists.
+getCommonElement(List a, List b) {
+  a.where(
+    (element) => b.contains(element),
+  );
+  return a;
+}
+
 // 	30.	Remove all falsy/null/empty values from a list.
 // 	31.	Shuffle a list randomly.
+suffleRandom(List ls) {
+  ls.shuffle(Random());
+  return ls;
+}
+
 // 	32.	Split a list into chunks of n size.
+splitIntoN(List ls, int n) {
+  List nLs = [];
+  List x = [];
+  for (var i in ls) {
+    if (x.length >= n) {
+      nLs.add(List.from(x));
+      x.clear();
+    } else {
+      x.add(i);
+    }
+  }
+  nLs.add(List.from(x));
+  return nLs;
+}
+
 // 	33.	Find difference between two lists.
+findDifference(List a, List b) {
+  List a1 = a
+      .where(
+        (element) => !b.contains(element),
+      )
+      .toList();
+  List b1 = b
+      .where(
+        (element) => !a.contains(element),
+      )
+      .toList();
+  return [...a1, ...b1];
+}
+
 // 	34.	Convert a list to a map (with index as key).
+convertLs(List ls) {
+  Map map = {};
+  for (int i = 0; i < ls.length; i++) map[i] = ls[i];
+  return map;
+}
+
 // 	35.	Extract only unique values from a list of maps.
+
 // 	36.	Group a list of items by property (like category).
 // 	37.	Sort list of maps by a specific key.
 // 	38.	Partition a list into even and odd indexed groups.
@@ -390,27 +506,191 @@ String translucateString(String str, int len) {
 
 // 🧱 3. Maps & Sets
 // 	41.	Swap keys and values in a map.
+swapmap(Map map) {
+  Map swap = {};
+  for (var item in map.entries) {
+    swap[item.value] = item.key;
+  }
+  return swap;
+}
+
 // 	42.	Merge two maps (with overlapping keys).
+mergeMaps(Map a, Map b) {
+  return {...a, ...b};
+}
+
 // 	43.	Sort a map by its values.
+sortMap(Map map) {
+  return Map.fromEntries(map.entries.toList()
+    ..sort(
+      (a, b) => a.value.compareTo(b.value),
+    ));
+}
+
 // 	44.	Convert list of pairs to a map.
+listofPairToMap(List<List> ls) {
+  var map = {};
+  for (List a in ls) {
+    if (a.length > 1) {
+      map[a[0]] = a[1];
+    }
+  }
+  return map;
+}
+
 // 	45.	Filter map entries by value.
+Map filterMapByValue(Map map, bool Function(dynamic value) condition) {
+  return Map.fromEntries(
+    map.entries.where((entry) => condition(entry.value)),
+  );
+}
+
 // 	46.	Count word frequency in a sentence using a map.
 // 	47.	Create a read-only map and demonstrate immutability.
+Map readOnly(Map map) => Map.unmodifiable(map);
+
 // 	48.	Check if two maps are equal.
+bool isMapEqual(Map a, Map b) => MapEquality().equals(a, b);
 // 	49.	Remove null values from a map.
+Map removeNull(Map map) => Map.fromEntries(map.entries.where(
+      (element) => element.value != null,
+    ));
 // 	50.	Invert nested maps (key-value reversal).
 
 // ⸻
 
 // 🧍‍♂️ 4. OOP (Classes, Inheritance, Encapsulation)
 // 	51.	Create a class User with private fields and getter/setter.
+class User {
+  String _name;
+  String _surname;
+  User(this._name, this._surname);
+
+  String get name => _name;
+  String get surname => _surname;
+  set name(String value) {
+    _name = value;
+  }
+
+  set surname(String value) {
+    _surname = value;
+  }
+}
+
 // 	52.	Implement inheritance between Shape, Circle, and Rectangle.
+class Shape {
+  double area() {
+    return 0.0;
+  }
+}
+
+class Circle extends Shape {
+  double radius;
+  Circle(this.radius);
+  @override
+  double area() {
+    return 3.1416 * radius * radius;
+  }
+}
+
+class Rectangle extends Shape {
+  double length;
+  double breath;
+  Rectangle(this.breath, this.length);
+  @override
+  double area() {
+    return length * breath;
+  }
+}
+
 // 	53.	Use abstract classes and implement their methods.
+abstract class shape1 {
+  double area();
+}
+
+class circle1 extends shape1 {
+  double radius;
+  circle1(this.radius);
+  @override
+  double area() {
+    return 3.14 * radius * radius;
+  }
+}
+
 // 	54.	Implement an interface manually using implements.
+class Animal {
+  canSpeak() {}
+  canEat() {}
+}
+
+class Dog implements Animal {
+  @override
+  canEat() {
+    print('Dog bark');
+  }
+
+  @override
+  canSpeak() {
+    print('Dog eat');
+  }
+}
+
 // 	55.	Demonstrate method overriding and super.
+class Vechile {
+  void start() {
+    print('vechile start');
+  }
+
+  void stop() {
+    print('vechile stop');
+  }
+}
+
+class Car extends Vechile {
+  @override
+  void start() {
+    super.start();
+    print('to start');
+  }
+}
+
 // 	56.	Use factory constructors for caching instances.
+class DBConnection {
+  final String dbName;
+  DBConnection._internal(this.dbName);
+  static final Map<String, DBConnection> _cache = {};
+  factory DBConnection(String dbName) {
+    if (_cache.containsKey(dbName)) {
+      return _cache[dbName]!;
+    }
+    final connection = DBConnection._internal(dbName);
+    _cache[dbName] = connection;
+    return connection;
+  }
+}
+
 // 	57.	Implement a Singleton class in Dart.
+class MySingleTon {
+  MySingleTon._internal();
+  static final _instance = MySingleTon._internal();
+  factory MySingleTon() => _instance;
+}
+
 // 	58.	Create a copyWith() method in a model class.
+class User1 {
+  String? name;
+  String? email;
+  User1(this.email, this.name);
+  coptWith(String? name, String? email) {
+    return User1(name, email);
+  }
+
+  @override
+  String toString() {
+    return "name : $name, email :$email";
+  }
+}
+
 // 	59.	Implement equality (==) and hashCode in a class.
 // 	60.	Build a class hierarchy for a Vehicle system (Car, Bike, Truck).
 
@@ -418,9 +698,27 @@ String translucateString(String str, int len) {
 
 // 🔄 5. Functional Programming
 // 	61.	Use .map() to transform a list of users into names.
+List<String> userName(List<User> ls) {
+  return ls
+      .map(
+        (e) => e._name,
+      )
+      .toList();
+}
+
 // 	62.	Chain .where() and .map() to filter and modify data.
 // 	63.	Use .fold() to concatenate strings.
+createConcentrateString(List<String> item) {
+  item.fold('', (a, b) => "$a $b");
+}
+
 // 	64.	Use .reduce() to find the longest word.
+findLongest(List<String> words) {
+  String word = words.reduce(
+    (a, b) => a.length > b.length ? a : b,
+  );
+  return word;
+}
 // 	65.	Implement your own higher-order function that takes a function as argument.
 // 	66.	Demonstrate function currying in Dart.
 // 	67.	Create a custom iterable that generates IDs.
@@ -433,14 +731,54 @@ String translucateString(String str, int len) {
 // 🕓 6. Async & Futures
 // 	71.	Simulate network delay using Future.delayed().
 // 	72.	Implement a function that fetches multiple async tasks in parallel.
+Future a() async {}
+Future b() async {}
+Future c() async {}
+Future d() async {
+  await Future.wait([a(), b(), c()]);
+}
+
 // 	73.	Use await Future.wait() for multiple futures.
 // 	74.	Implement retry logic for a failed network call.
 // 	75.	Use Stream.periodic() to emit values at intervals.
+Stream<int> numberStream() {
+  return Stream.periodic(Duration(seconds: 1), (count) => count + 1);
+}
+
+void main2() {
+  numberStream().take(5).listen((value) {
+    print("Value: $value");
+  });
+  countdown(5).listen(
+    (value) {
+      print("⏱ $value seconds remaining");
+    },
+  ).onDone(
+    () {
+      print("🚀 Time's up!");
+    },
+  );
+}
+
 // 	76.	Create a countdown timer using Stream.
+Stream<int> countdown(int sec) async* {
+  for (int i = sec; i >= 0; i--) {
+    yield i;
+    await Future.delayed(Duration(seconds: 1));
+  }
+}
+
 // 	77.	Use async* and yield to emit multiple results.
 // 	78.	Handle a stream error gracefully.
 // 	79.	Combine two streams into one.
 // 	80.	Implement a fake API call returning JSON and parse it.
+// create Singleton class
+class MyClass {
+  MyClass._internal();
+  static final MyClass _instancs = MyClass._internal();
+  factory MyClass() => _instancs;
+  // Example property
+}
 
 // ⸻
 
@@ -448,7 +786,38 @@ String translucateString(String str, int len) {
 // 	81.	Read a local JSON string and convert it to a Dart object.
 // 	82.	Serialize a Dart object to JSON.
 // 	83.	Write JSON data to a file.
+writeDate() async {
+  final user = {"id": 1, "name": "Neelesh"};
+  final file = File('user.json');
+
+  await file.writeAsString(jsonEncode(user));
+  print("✅ JSON written to user.json");
+}
+
 // 	84.	Parse nested JSON into a Dart model.
+class Address {
+  String city;
+  String houseno;
+  Address(this.city, this.houseno);
+  factory Address.fromJson(Map<String, dynamic> json) {
+    return Address(json['city'], json['houseno']);
+  }
+  Map<String, dynamic> toJson() {
+    return {'city': city, 'houseno': houseno};
+  }
+}
+
+class Person {
+  String name;
+  Address address;
+  Person(this.address, this.name);
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(Address.fromJson(json['address']), json['name']);
+  }
+   Map<String, dynamic> toJson() {
+    return {'name': name, 'address': address.toJson()};
+  }
+}
 // 	85.	Pretty-print JSON data.
 // 	86.	Remove null or empty fields from a JSON map.
 // 	87.	Deep clone a JSON map.

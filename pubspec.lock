@@ -41,16 +41,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  characters:
-    dependency: transitive
-    description:
-      name: characters
-      sha256: f71061c654a3380576a52b451dd5532377954cf9dbd272a78fc8479606670803
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.4.0"
   collection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: collection
       sha256: "2f5709ae4d3d59dd8f7cd309b4e023046b57d8a6c82130785d2b0e5868084e76"
@@ -89,40 +81,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
-  firebase_core:
-    dependency: "direct main"
-    description:
-      name: firebase_core
-      sha256: "776fc0d7a0da72adfb7e486c6be05798b7f4290a8be4819cb1e6cc93077e60f2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.19.0"
-  firebase_core_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_core_platform_interface
-      sha256: "3cd70171c6bdd314d726a46706c75554b75b20b97869dbace71832615ea8ef3c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.4.1"
-  firebase_core_web:
-    dependency: transitive
-    description:
-      name: firebase_core_web
-      sha256: eed8abeec3d504df05019b6a5c781aa01f76491d51ff60579d855c4b2197f116
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.6.5"
-  flutter:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
-  flutter_web_plugins:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -195,14 +153,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.12.12"
-  material_color_utilities:
-    dependency: transitive
-    description:
-      name: material_color_utilities
-      sha256: f7142bb1154231d7ea5f96bc7bde4bda2a0945d2806bb11670e30b850d56bdec
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.11.1"
   meta:
     dependency: transitive
     description:
@@ -243,14 +193,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
-  plugin_platform_interface:
-    dependency: transitive
-    description:
-      name: plugin_platform_interface
-      sha256: dbf0f707c78beedc9200146ad3cb0ab4d5da13c246336987be6940f026500d3a
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.3"
   pool:
     dependency: transitive
     description:
@@ -299,11 +241,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
-  sky_engine:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -392,14 +329,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
-  vector_math:
-    dependency: transitive
-    description:
-      name: vector_math
-      sha256: d530bd74fea330e6e364cda7a85019c434070188383e1cd8d9777ee586914c5b
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.0"
   vm_service:
     dependency: transitive
     description:
@@ -441,5 +370,4 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=3.8.0-0 <4.0.0"
-  flutter: ">=1.12.13+hotfix.5"
+  dart: ">=3.4.0 <4.0.0"
