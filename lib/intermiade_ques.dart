@@ -30,7 +30,6 @@ void convertStrToList(String csNum) {
 }
 
 // 5. Test whether a number is within 100 of 1000 or 2000.
-
 bool checkNumisInWithin(int num) {
   if ((((num - 1000).abs()) >= 100) || (((num - 2000).abs()) >= 100)) {
     return true;
