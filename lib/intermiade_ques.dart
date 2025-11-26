@@ -20,7 +20,7 @@ void printReverseName(String firstName, String lastName) {
 
 // 4. Accept comma-separated numbers, generate list and tuple.
 void convertStrToList(String csNum) {
-  List<int> ls = csNum
+  csNum
       .split(",")
       .map(
         (e) => int.parse(e),
@@ -237,6 +237,11 @@ findMaxAndMin(List ls) {
 // 31. Sort a list using bubble sort.
 
 // 32. Find the second largest element in a list.
+int? secondLargestElement(List<int> ls) {
+  ls.sort();
+  return ls.length > 2 ? ls[ls.length - 2] : null;
+}
+
 // 33. Check if two strings are anagrams.
 // 34. Calculate factorial of a number using recursion.
 // 35. Generate Fibonacci series up to n terms.
@@ -246,20 +251,117 @@ findMaxAndMin(List ls) {
 // 39. Check if a number is a perfect number.
 // 40. Generate all subsets of a set.
 // 41. Find the sum of digits of an integer.
+int sumOfDigit(int num) {
+  return num.toString().split("").map(int.parse).reduce(
+        (a, b) => a + b,
+      );
+}
+
 // 42. Check if a year is a leap year.
 // 43. Find all prime numbers up to n.
 // 44. Find the length of a string without using length property.
+int findTheLength(String str) {
+  int length = 0;
+  List<String> ls = str.split("");
+  try {
+    while (true) {
+      ls[length];
+      length++;
+    }
+  } catch (e) {}
+  return length;
+}
+
 // 45. Count vowels and consonants in a string.
+seprateandCount(String str) {
+  List vowels = [];
+  List consonents = [];
+  List nV = ['a', 'e', 'i', 'o', 'u'];
+  for (var ch in str.toLowerCase().split("")) {
+    if (RegExp(r'[a-z]').hasMatch(ch)) {
+      if (nV.contains(ch))
+        vowels.add(ch);
+      else
+        consonents.add(ch);
+    }
+  }
+  print("vowels: ${vowels.length}, Consonents: ${consonents.length}");
+}
+
 // 46. Capitalize the first letter of each word in a string.
+capitailzeTheFirst(String str) {
+  List strLs = str.split(' ');
+  strLs.map((word) {
+    if (word.isEmpty) return '';
+
+    return word[0].toUpperCase() + word.substring(1);
+  });
+  return strLs.join(" ");
+}
+
 // 47. Remove all vowels from a string.
+removeVowels(String str) {
+  List nV = ['a', 'e', 'i', 'o', 'u'];
+  return str
+      .split("")
+      .where(
+        (e) => !nV.contains(e),
+      )
+      .join("");
+}
+
 // 48. Reverse the words in a sentence.
+reverseWords(String sent) {
+  return sent.split(" ").reversed.join(" ");
+}
+
 // 49. Find the intersection of two lists.
+intersectionOfLists(List ls1, List ls2) {
+  List intersectionList = [];
+  for (var item in ls1) {
+    if (ls2.contains(item)) {
+      intersectionList.add(item);
+    }
+  }
+}
+
 // 50. Find the union of two lists.
+unionOfList(List ls1, List ls2) {
+  return [...ls1, ...ls2].toSet();
+}
+
 // 51. Calculate the median of a list of numbers.
+median(List<int> ls) {
+  ls.sort();
+  int length = ls.length;
+  int mid = ls.length ~/ 2;
+  if (length % 2 != 0) {
+    return ls[mid];
+  } else {
+    return (ls[mid - 1] + ls[mid]) ~/ 2;
+  }
+}
 // 52. Implement a stack using list.
+
 // 53. Implement a queue using list.
 // 54. Check if a string has all unique characters.
+checkAllUnique(String str) {
+  Map map = {};
+  for (String ch in str.split("")) {
+    map[ch] = (map[ch] ?? 0) + 1;
+    if (map[ch] > 1) {
+      return false;
+    }
+  }
+  return true;
+}
+
+checkAllUnique2(String str) {
+  return str.length == str.split('').toSet().length;
+}
+
 // 55. Calculate the power of a number using recursion.
+
 // 56. Flatten a nested list.
 // 57. Find the longest palindrome substring.
 // 58. Check if a number is Armstrong number.
@@ -298,10 +400,43 @@ findMaxAndMin(List ls) {
 // 91. Find shortest path in an unweighted graph.
 // 92. Implement Dijkstra’s algorithm.
 // 93. Find first non-repeating character in a string.
-// 94. Check if two strings are rotations of each other.
-// 95. Find the longest common prefix.
-// 96. Implement a function to find summation of digits until single digit remains.
 
+// 94. Check if two strings are rotations of each other.
+bool isStringsRotationsEachOther(String a, String b) {
+  if (a.length != b.length) return false;
+  String doubleStr = a + a;
+  if (doubleStr.contains(b)) {
+    return true;
+  }
+  return false;
+}
+
+// 95. Find the longest common prefix.
+String longestCommonPrefix(List<String> ls) {
+  if (ls.isEmpty) return "";
+  String prefix = ls[0];
+
+  for (int i = 0; i < ls.length; i++) {
+    while (!ls[i].startsWith(prefix)) {
+      prefix = prefix.substring(0, ls.length - 1);
+      if (prefix.isEmpty) return "";
+    }
+  }
+  return prefix;
+}
+
+// 96. Implement a function to find summation of digits until single digit remains.
+int sumToSingleDigit(int num) {
+  while (num >= 10) {
+    int sum = 0;
+    while (num > 0) {
+      sum += num % 10;
+      num ~/= 10;
+    }
+    num = sum;
+  }
+  return num;
+}
 
 // 97. Find the missing number in an array of size n-1.
 findMissingNum(List<int> arr) {
