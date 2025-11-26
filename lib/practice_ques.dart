@@ -676,6 +676,12 @@ class MySingleTon {
   factory MySingleTon() => _instance;
 }
 
+class MySingle {
+  MySingle._internal();
+  static final _instan = MySingle._internal();
+  factory MySingle() => _instan;
+}
+
 // 	58.	Create a copyWith() method in a model class.
 class User1 {
   String? name;
@@ -780,6 +786,11 @@ class MyClass {
   // Example property
 }
 
+class My {
+  My._int();
+  static final inter = My._int();
+  factory My() => inter;
+}
 // ⸻
 
 // 📦 7. Files & JSON
@@ -814,8 +825,21 @@ class Person {
   factory Person.fromJson(Map<String, dynamic> json) {
     return Person(Address.fromJson(json['address']), json['name']);
   }
-   Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return {'name': name, 'address': address.toJson()};
+  }
+}
+
+class School {
+  String name;
+  String add;
+  Person person;
+  School(this.name, this.add, this.person);
+  factory School.fromJson(Map<String, dynamic> json) {
+    return School(json['name'], json['add'], Person.fromJson(json['person']));
+  }
+  tojson() {
+    return {"name": name, "add": add}; 
   }
 }
 // 	85.	Pretty-print JSON data.
